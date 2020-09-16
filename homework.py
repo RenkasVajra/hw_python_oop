@@ -54,12 +54,13 @@ class CashCalculator(Calculator):
         remained = self.limit - self.get_today_stats()
         
 
-        if remained < 0:
-            return f'На сегодня осталось {remained} {self.CURRENCIES}'
-        elif remained == 0:
+        if reminder > 0:
+            return f'На сегодня осталось {remained} {currency}'
+        elif reminder == 0:
             return f'Денег нет, держись'
         else:
-            return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES}'
+            reminder = abs(reminder)
+            return f'Денег нет, держись: твой долг - {remained} {currency}''
 
 
 class CaloriesCalculator(Calculator):
