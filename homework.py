@@ -64,7 +64,7 @@ class CashCalculator(Calculator):
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
-        calories = self.limit - self.get_today_stats()
+        self.calories = self.limit - self.get_today_stats()
 
         if calories < self.limit:
             print (f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал')
