@@ -9,14 +9,14 @@ class Calculator:
         self.records.append(record)
     def get_today_stats(self):
         status = 0
-        today_date = (dt.datetime.today()).date()
+        today = (dt.datetime.today()).date()
         for record in self.records:
             if record.date == (dt.datetime.today()).date():
                 status += record.amount
         return status
     def get_week_stats(self):
         status = 0
-        today_date = (dt.datetime.today()).date()
+        today = (dt.datetime.today()).date()
         week_ago = today_date - dt.timedelta(days=6)
         for record in self.records:
             if week_ago <= record.date <= today:
@@ -38,7 +38,7 @@ class Record:
 
 
 class CashCalculator(Calculator):
-    EURO_RATE = 80
+    EURO_RATE = 88
     USD_RATE = 75
     CURRENCIES = {
         "usd":{"RATE":USD_RATE,'name': 'USD'},
@@ -49,11 +49,11 @@ class CashCalculator(Calculator):
     def get_today_cash_remained(self,currency):
         remained = self.limit - self.get_today_stats()
         if remained > 0:
-            return f'На сегодня осталось {remained} {amount}'
+            return f'На сегодня осталось {remained} {currency}'
         elif remained == 0:
             return f'Денег нет, держись'
         else:
-            return f'Денег нет, держись: твой долг - {remained} {amount}'
+            return f'Денег нет, держись: твой долг - {remained} {currency}'
 
 
 class CaloriesCalculator(Calculator):
