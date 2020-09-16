@@ -46,6 +46,7 @@ class CashCalculator(Calculator):
     RUB_RATE = 1
 
 
+
     def get_today_cash_remained(self,currency):
         remained = self.limit - self.get_today_stats()
         CURRENCIES = {
@@ -66,11 +67,10 @@ class CaloriesCalculator(Calculator):
         today_sum = super().get_today_stats()
         calories = self.limit - today_sum
 
-        if calories :
-            print (f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал')
+        if calories < self.limit:
+            return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
-            print (f'Хватит есть!')
-
+            return f'Хватит есть!'
 
 
 
