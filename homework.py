@@ -41,36 +41,47 @@ class Record:
 
 
 class CashCalculator(Calculator):
+    
     USD_RATE = 60.00
     EURO_RATE = 70.00
     RUB_RATE = 1
-
+    CURRENCIES = {
+        "usd": {"RATE": self.USD_RATE, 'name': 'USD'},
+        "rub": {"RATE": self.RUB_RATE, 'name': "руб"},
+        "eur": {'RATE': self.EURO_RATE, 'name': 'Euro'}
+        }
 
 
     def get_today_cash_remained(self,currency):
+
+        
+
         remained = self.limit - self.get_today_stats()
-        CURRENCIES = {
-            "usd": {"RATE": self.USD_RATE, 'name': 'USD'},
-            "rub": {"RATE": self.RUB_RATE, 'name': "руб"},
-            "eur": {'RATE': self.EURO_RATE, 'name': 'Euro'}
-        }
+
         if remained > 0:
-            return f'На сегодня осталось {remained} {self.CURRENCIES[currency]["name"]}'
+            return f'На сегодня осталось {remained} {self.CURRENCIES[currency][1]}'
         elif remained == self.limit:
             return f'Денег нет, держись'
         else:
-            return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES[currency]["name"]}'
+            return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES[currency][1]}'
 
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
-        today_sum = super().get_today_stats()
+        today_sum = self.get_today_stats()
         calories = self.limit - today_sum
 
-        if calories < self.limit:
+        if calories > 0:
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
+
+
+
+
+
+
+
 
 
 
