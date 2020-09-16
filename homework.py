@@ -50,9 +50,9 @@ class CashCalculator(Calculator):
 
     def get_today_cash_remained(self,currency):
         self.CURRENCIES = {
-            "usd": {"RATE": USD_RATE, 'name': 'USD'},
-            "rub": {"RATE": RUB_RATE, 'name': "руб"},
-            "eur": {'RATE': EURO_RATE, 'name': 'Euro'}
+            "usd": {"RATE": self.USD_RATE, 'name': 'USD'},
+            "rub": {"RATE": self.RUB_RATE, 'name': "руб"},
+            "eur": {'RATE': self.EURO_RATE, 'name': 'Euro'}
         }
 
 
