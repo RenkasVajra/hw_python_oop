@@ -10,10 +10,11 @@ class Calculator:
     def add_record(self, record):
         self.records.append(record)
 
-    def get_today_stats(self, records):
+        def get_today_stats(records):
         now_time = dt.datetime.now()
         today_status = 0
-        for record in self.records:
+        for record in records:
+
 
             if records.date == now_time:
                 today_status += record.amount
