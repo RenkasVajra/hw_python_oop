@@ -51,7 +51,7 @@ class CashCalculator(Calculator):
         }
 
     def get_today_cash_remained(self,currency):
-        self.remained = self.limit - self.get_today_stats()
+        remained = self.limit - self.get_today_stats()
         
 
         if remained < self.limit:
