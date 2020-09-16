@@ -54,11 +54,11 @@ class CashCalculator(Calculator):
         remained = self.limit - self.get_today_stats()
 
         if remained > 0:
-            return f'На сегодня осталось {remained} {CURRENCIES}'
+            return f'На сегодня осталось {remained} {self.currencies[currency]["name"]}'
         elif remained == self.limit:
             return f'Денег нет, держись'
         else:
-            return f'Денег нет, держись: твой долг - {remained} {CURRENCIES}'
+            return f'Денег нет, держись: твой долг - {remained} {self.currencies[currency]["name"]}'
 
 
 class CaloriesCalculator(Calculator):
@@ -70,6 +70,14 @@ class CaloriesCalculator(Calculator):
             print (f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал')
         else:
             print (f'Хватит есть!')
+
+
+
+
+
+
+
+
 
 
 
