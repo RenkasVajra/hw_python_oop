@@ -10,10 +10,10 @@ class Calculator:
     def add_record(self, record):
         self.records.append(record)
 
-    def get_today_stats(self,records):
+    def get_today_stats(self, records):
         now_time = dt.datetime.now()
         today_status = 0
-        for record in records:
+        for record in self.records:
 
             if records.date == now_time:
                 today_status += record.amount
@@ -52,8 +52,6 @@ class CashCalculator(Calculator):
     }
 
     def get_today_cash_remained(self,currency):
-
-
         remained = self.limit - self.get_today_status()
         if remained < self.limit:
             return f'На сегодня осталось {remained} {currency}'
