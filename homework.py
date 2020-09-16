@@ -50,23 +50,21 @@ class CashCalculator(Calculator):
         "eur":{'RATE': EURO_RATE, 'name':'Euro'}
         }
 
-     def get_today_cash_remained(self, currency):
-        remains = abs(self.limit - self.get_today_stats())
-        for cash in self.currencies.keys():
-            if cash == currency:
-                rate = cash[1]
-                cash_remains = round((remains / rate), 2)
-                money_name = cash[0]
-                if cash_remains > 0:
-                    return f"На сегодня осталось {cash_remains} {money_name}"
-                elif cash_remains == 0:
-                    return f"Денег нет, держись"
-                return f"Денег нет, держись: твой долг {cash_remains} {money_name}"
+    def get_today_cash_remained(self,currency):
+        remained = self.limit - self.get_today_stats()
+
+        if remained < self.limit:
+            return f'На сегодня осталось {remained} {currency}'
+        elif remained == self.limit:
+            return f'Денег нет, держись'
+        else:
+            return f'Денег нет, держись: твой долг - {remained} {currency}'
 
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
-        calories = self.limit - self.get_today_stats()
+        today_sum = super().get_today_stats()
+        calories = self.limit - today_sum
 
         if calories < self.limit:
             print (f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал')
