@@ -45,26 +45,26 @@ class CashCalculator(Calculator):
     USD_RATE = 60.00
     EURO_RATE = 70.00
     RUB_RATE = 1
-    CURRENCIES = {
-        "usd": {"RATE": USD_RATE, 'name': 'USD'},
-        "rub": {"RATE": RUB_RATE, 'name': "руб"},
-        "eur": {'RATE': EURO_RATE, 'name': 'Euro'}
-        }
-
+  
+    
 
     def get_today_cash_remained(self,currency):
-
+        self.CURRENCIES = {
+            "usd": {"RATE": USD_RATE, 'name': 'USD'},
+            "rub": {"RATE": RUB_RATE, 'name': "руб"},
+            "eur": {'RATE': EURO_RATE, 'name': 'Euro'}
+        }
 
 
         remained = self.limit - self.get_today_stats()
 
         if remained > 0:
             return f'На сегодня осталось {remained} {self.CURRENCIES[currency]["name"]}'
-        elif remained == self.limit:
+        elif remained == 0:
             return f'Денег нет, держись'
         else:
             return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES[currency]["name"]}'
-        
+
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
@@ -75,6 +75,7 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
+
 
 
 
