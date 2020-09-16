@@ -21,7 +21,6 @@ class Calculator:
         for record in self.records:
             if week_ago <= record.date <= today:
                 status += record.amount
-
         return status
 
 
