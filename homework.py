@@ -33,7 +33,7 @@ class Calculator:
 
 class Record:
    def __init__(self, amount, comment,date = (dt.datetime.today()).date()):
-       self.amount = summ
+       self.amount = amount
        self.comment = comment
        if type(date) is str:
            self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
