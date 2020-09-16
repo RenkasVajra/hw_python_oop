@@ -2,31 +2,27 @@ import datetime as dt
 import pytest as pt
 
 class Calculator:
-    limit = 2500
-    def __init__(self,limit):
-        self.records = []
+    def __init__(self, limit):
         self.limit = limit
-
+        self.records = []
     def add_record(self, record):
         self.records.append(record)
-
-    def get_today_stats(records):
-        now_time = dt.datetime.now()
-        today_status = 0
-        for record in records:
-
-            if records.date == now_time:
-                today_status += record.amount
-        return today_status
-
-    def get_week_stats(self):
-        week_stats = 0
-        today = dt.datetime.today()
-        delta_date = today - dt.timedelta(days=7)
+    def get_today_stats(self):
+        status = 0
+        today = (dt.datetime.today()).date()
         for record in self.records:
-            if delta_date <= record.date <= today:
-                week_stats += record.amount
-        return delta_date
+            if record.date == (dt.datetime.today()).date():
+                status += record.amount
+        return status
+    def get_week_stats(self):
+        status = 0
+        delta_date = (dt.datetime.today()).date()
+        week_ago = today - dt.timedelta(days=6)
+        for record in self.records:
+            if week_ago <= record.date <= today:
+                status += record.amount
+
+        return status
 
 
 
@@ -44,25 +40,23 @@ class Record:
 class CashCalculator(Calculator):
     EURO_RATE = 80
     USD_RATE = 75
-    RUB_RATE = 1
     CURRENCIES = {
-        "rub": ["руб", 1],
-        "usd": ["USD", USD_RATE],
-        "eur": ["Euro", EURO_RATE],
-    }
+        "usd":{"RATE":USD_RATE,'name': 'USD'},
+        "rub":{"RATE": 1, 'name': "руб"},
+        "eur":{'RATE': EURO_RATE, 'name':'Eiro'}
+        }
 
     def get_today_cash_remained(self,currency):
-        remained = self.limit - self.get_today_status()
-        if remained < self.limit:
-            return f'На сегодня осталось {remained} {currency}'
-        elif remainednder == 0:
+        remained = self.limit - self.get_today_stats()
+        amount - self.CURRENCIES[currency]['name']
+        if remained > 0:
+            return f'На сегодня осталось {remained} {amount}'
+        elif remained == 0:
             return f'Денег нет, держись'
         else:
-            return f'Денег нет, держись: твой долг - {remained} {currency}'
+            return f'Денег нет, держись: твой долг - {remained} {amount}'
 
-    def get_week_cash_remained(self,currency):
-        weekly_remain = self.get_week_stats()
-        return f'За последнюю неделю было потрачено {weekly_remain} {currency}'
+    
 class CaloriesCalculator(Calculator):
 
     def get_calories_remained(self):
@@ -71,3 +65,4 @@ class CaloriesCalculator(Calculator):
             print(f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {balance} кКал')
         else:
             print(f'Хватит есть!')
+
