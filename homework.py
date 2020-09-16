@@ -41,11 +41,12 @@ class Record:
 
 
 class CashCalculator(Calculator):
-    EURO_RATE = 89
-    USD_RATE = 75
+    USD_RATE = 60.00
+    EURO_RATE = 70.00
+    RUB_RATE = 1
     CURRENCIES = {
         "usd":{"RATE":USD_RATE,'name': 'USD'},
-        "rub":{"RATE": 1, 'name': "руб"},
+        "rub":{"RATE": RUB_RATE, 'name': "руб"},
         "eur":{'RATE': EURO_RATE, 'name':'Euro'}
         }
 
@@ -62,7 +63,7 @@ class CashCalculator(Calculator):
 
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
-        calories = self.limit - self.get_today_stats()
+        self.calories = self.limit - self.get_today_stats()
 
         if calories < self.limit:
             print (f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал')
