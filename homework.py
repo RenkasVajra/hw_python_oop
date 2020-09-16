@@ -10,11 +10,10 @@ class Calculator:
     def add_record(self, record):
         self.records.append(record)
 
-        def get_today_stats(records):
+    def get_today_stats(self,records):
         now_time = dt.datetime.now()
         today_status = 0
         for record in records:
-
 
             if records.date == now_time:
                 today_status += record.amount
@@ -74,16 +73,3 @@ class CaloriesCalculator(Calculator):
             print(f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {balance} кКал')
         else:
             print(f'Хватит есть!')
-
-
-
-
-
-
-
-
-
-
-
-
-       
