@@ -1,6 +1,5 @@
 import datetime as dt
 import pytest as pt
-# для CashCalculator
 
 class Calculator:
     def __init__(self, limit):
@@ -63,6 +62,8 @@ class CashCalculator(Calculator):
             return f'На сегодня осталось {remained} {currency_name}'
         if remained == 0:
             return f'Денег нет, держись'
+        if remained < 0:
+            return f'Покупка не может быть отрицательной цены'
         return f'Денег нет, держись: твой долг - {abs(currency_name)} {remained}'
 
 
@@ -75,8 +76,6 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
-
-
 
 
 
