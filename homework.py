@@ -1,6 +1,9 @@
 import datetime as dt
 import pytest as pt
 
+def date(self):
+    if date is None:
+        date = dt.datetime.today()
 class Calculator:
     def __init__(self, limit):
         self.limit = limit
@@ -30,7 +33,9 @@ class Calculator:
 
 
 class Record:
-   def __init__(self, amount, comment,date = (dt.datetime.today()).date()):
+   def __init__(self, amount, comment,date = None):
+       
+       self.date   
        self.amount = amount
        self.comment = comment
 
@@ -46,7 +51,10 @@ class CashCalculator(Calculator):
     EURO_RATE = 70.00
     RUB_RATE = 1
 
-
+    def currencies_obj(self):
+        return {'руб': self.RUB_RATE,
+                'Euro': self.EURO_RATE,
+                'USD': self.USD_RATE}
 
     def get_today_cash_remained(self,currency):
         CURRENCIES = {
@@ -59,7 +67,7 @@ class CashCalculator(Calculator):
 
         if remained > 0:
             return f'На сегодня осталось {remained} {self.CURRENCIES[currency]}'
-        elif remained == 0:
+        if remained == 0:
             return f'Денег нет, держись'
         return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES[currency]}'
 
@@ -73,19 +81,6 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
