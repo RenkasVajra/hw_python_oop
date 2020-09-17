@@ -45,11 +45,11 @@ class CashCalculator(Calculator):
     USD_RATE = 60.00
     EURO_RATE = 70.00
     RUB_RATE = 1
-  
-    
+
+
 
     def get_today_cash_remained(self,currency):
-        self.CURRENCIES = {
+        CURRENCIES = {
             "usd": {"RATE": self.USD_RATE, 'name': 'USD'},
             "rub": {"RATE": self.RUB_RATE, 'name': "руб"},
             "eur": {'RATE': self.EURO_RATE, 'name': 'Euro'}
@@ -59,11 +59,11 @@ class CashCalculator(Calculator):
         remained = self.limit - self.get_today_stats()
 
         if remained > 0:
-            return f'На сегодня осталось {remained} {self.CURRENCIES[currency]["name"]}'
+            return f'На сегодня осталось {remained} {CURRENCIES[currency]["name"]}'
         elif remained == 0:
             return f'Денег нет, держись'
         else:
-            return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES[currency]["name"]}'
+            return f'Денег нет, держись: твой долг - {remained} {CURRENCIES[currency]["name"]}'
 
 
 class CaloriesCalculator(Calculator):
@@ -75,7 +75,6 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
-
 
 
 
