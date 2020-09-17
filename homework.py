@@ -62,7 +62,7 @@ class CashCalculator(Calculator):
             return f'На сегодня осталось {abs(remained)} {amount}'
         if balance == 0:
             return f'Денег нет, держись'
-        return f'Денег нет, держись: твой долг - {abs(remained)} {amount} '
+        return f'Денег нет, держись: твой долг - {abs(remained)} {amount}'
 
 
 class CaloriesCalculator(Calculator):
