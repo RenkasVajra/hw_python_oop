@@ -45,9 +45,9 @@ class CashCalculator(Calculator):
     EURO_RATE = 70.00
     RUB_RATE = 1
     CURRENCIES = {
-        "usd": {"RATE": USD_RATE, 'name': 'USD'},
-        "rub": {"RATE": RUB_RATE, 'name': "руб"},
-        "eur": {'RATE': EURO_RATE, 'name': 'Euro'}
+        "USD": {"RATE": USD_RATE, 'name': 'USD'},
+        "руб": {"RATE": RUB_RATE, 'name': "руб"},
+        "EURO": {'RATE': EURO_RATE, 'name': 'Euro'}
     }
 
 
@@ -74,7 +74,6 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
-
 
 
 
