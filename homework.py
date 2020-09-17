@@ -59,10 +59,10 @@ class CashCalculator(Calculator):
         remained = round(balance / self.CURRENCIES[currency]["name"], 2)
 
         if remained > 0:
-            return f'На сегодня осталось {remained} {CURRENCIES[currency]["name"]}'
+            return f'На сегодня осталось {remained} {currency_name}'
         if remained == 0:
             return f'Денег нет, держись'
-        return f'Денег нет, держись: твой долг - {remained} {CURRENCIES[currency]["name"]}'
+        return f'Денег нет, держись: твой долг - {abs(currency_name)} {remained}'
 
 
 class CaloriesCalculator(Calculator):
@@ -74,6 +74,11 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
+
+
+
+
+
 
 
 
