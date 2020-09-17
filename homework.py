@@ -94,4 +94,3 @@ class CaloriesCalculator(Calculator):
 
 
 
-
