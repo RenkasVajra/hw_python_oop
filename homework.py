@@ -60,7 +60,7 @@ class CashCalculator(Calculator):
 
         if remained > 0:
             return f'На сегодня осталось {remained} {CURRENCIES[currency]["name"]}'
-        elif remained >= self.limit:
+        elif remained >= 2500:
             return f'Денег нет, держись'
         else:
             return f'Денег нет, держись: твой долг - {remained} {CURRENCIES[currency]["name"]}'
