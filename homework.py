@@ -1,9 +1,6 @@
 import datetime as dt
 import pytest as pt
 
-def date_now(self):
-    if date_now is None:
-        date_now = dt.datetime.today()
 class Calculator:
     def __init__(self, limit):
         self.limit = limit
@@ -33,9 +30,7 @@ class Calculator:
 
 
 class Record:
-   def __init__(self, amount, comment,date):
-
-       self.date = self.date_now()
+   def __init__(self, amount, comment,date = (dt.datetime.today()).date()):
        self.amount = amount
        self.comment = comment
 
@@ -51,25 +46,23 @@ class CashCalculator(Calculator):
     EURO_RATE = 70.00
     RUB_RATE = 1
 
-    def currencies_obj(self):
-        return {'руб': self.RUB_RATE,
-                'Euro': self.EURO_RATE,
-                'USD': self.USD_RATE}
+
 
     def get_today_cash_remained(self,currency):
         CURRENCIES = {
-            "rub": ("руб", 1),
-            "usd": ("USD", self.USD_RATE),
-            "eur": ("Euro", self.EURO_RATE),
+            "usd": {"RATE": self.USD_RATE, 'name': 'USD'},
+            "rub": {"RATE": self.RUB_RATE, 'name': "руб"},
+            "eur": {'RATE': self.EURO_RATE, 'name': 'Euro'}
         }
+
 
         remained = round(self.get_today_stats() / CURRENCIES[currency][0],2 )
 
         if remained > 0:
-            return f'На сегодня осталось {remained} {self.CURRENCIES[currency]}'
-        if remained == 0:
+            return f'На сегодня осталось {remained} {CURRENCIES[currency]["name"]}'
+        elif remained == 0:
             return f'Денег нет, держись'
-        return f'Денег нет, держись: твой долг - {remained} {self.CURRENCIES[currency]}'
+        return f'Денег нет, держись: твой долг - {remained} {CURRENCIES[currency]["name"]}'
 
 
 class CaloriesCalculator(Calculator):
