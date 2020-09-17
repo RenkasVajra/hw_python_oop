@@ -51,15 +51,15 @@ class CashCalculator(Calculator):
     }
 
 
-
-
     def get_today_cash_remained(self,currency):
+
+
         balance = self.limit - self.get_today_stats()
-        amount = self.CURRENCIES[currency]["name"]
         remained = round(balance / self.CURRENCIES[currency]["RATE"], 2)
+        amount = self.CURRENCIES[currency]["name"]
 
         if balance > 0:
-            return f'На сегодня осталось {remained} {amount}'
+            return f'На сегодня осталось {abs(remained)} {amount}'
         if balance == 0:
             return f'Денег нет, держись'
         return f'Денег нет, держись: твой долг - {abs(remained)} {amount} '
@@ -74,6 +74,8 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
+
+
 
 
 
