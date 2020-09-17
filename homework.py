@@ -56,14 +56,13 @@ class CashCalculator(Calculator):
         }
 
 
-        remained = self.limit - self.get_today_stats()
+        remained = round(self.get_today_stats() / CURRENCIES[currency][0],2 )
 
         if remained > 0:
             return f'На сегодня осталось {remained} {CURRENCIES[currency]["name"]}'
-        elif remained >= 2500:
+        elif remained == 0:
             return f'Денег нет, держись'
-        else:
-            return f'Денег нет, держись: твой долг - {remained} {CURRENCIES[currency]["name"]}'
+        return f'Денег нет, держись: твой долг - {remained} {CURRENCIES[currency]["name"]}'
 
 
 class CaloriesCalculator(Calculator):
