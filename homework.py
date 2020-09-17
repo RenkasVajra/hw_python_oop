@@ -1,9 +1,9 @@
 import datetime as dt
 import pytest as pt
 
-def date(self):
-    if date is None:
-        date = dt.datetime.today()
+def date_now(self):
+    if date_now is None:
+        date_now = dt.datetime.today()
 class Calculator:
     def __init__(self, limit):
         self.limit = limit
@@ -33,9 +33,9 @@ class Calculator:
 
 
 class Record:
-   def __init__(self, amount, comment,date = None):
-       
-       self.date   
+   def __init__(self, amount, comment,date):
+
+       self.date = self.date_now()
        self.amount = amount
        self.comment = comment
 
@@ -81,6 +81,7 @@ class CaloriesCalculator(Calculator):
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         else:
             return f'Хватит есть!'
+
 
 
 
