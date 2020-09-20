@@ -53,13 +53,13 @@ class CashCalculator(Calculator):
         balance = self.limit - self.get_today_stats()
         remained = round(balance / self.CURRENCIES[currency]["RATE"], 2)
         amount = self.CURRENCIES[currency]["name"]
-
+        mane = abs(remained)
 
         if balance > 0:
-            return f'На сегодня осталось {remained} {amount}'
+            return f'На сегодня осталось {mane} {amount}'
         if balance == 0:
             return f'Денег нет, держись'
-        return f'Денег нет, держись: твой долг - {remained} {amount} '
+        return f'Денег нет, держись: твой долг - {mane} {amount} '
 
 
 class CaloriesCalculator(Calculator):
