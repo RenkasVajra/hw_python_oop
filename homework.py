@@ -53,8 +53,8 @@ class CashCalculator(Calculator):
         balance = self.limit - self.get_today_stats()
         remained = round(balance / self.CURRENCIES[currency]["RATE"], 2)
         amount = self.CURRENCIES[currency]["name"]
-        remained = abs(remained)
-        
+
+
         if balance > 0:
             return f'На сегодня осталось {remained} {amount}'
         if balance == 0:
@@ -70,23 +70,3 @@ class CaloriesCalculator(Calculator):
         if calories > 0:
             return f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал'
         return f'Хватит есть!'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
