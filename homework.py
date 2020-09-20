@@ -51,9 +51,10 @@ class CashCalculator(Calculator):
     def get_today_cash_remained(self, currency):
 
         balance = self.limit - self.get_today_stats()
-        remained = abs(round(balance / self.CURRENCIES[currency]["RATE"], 2))
+        remained = round(balance / self.CURRENCIES[currency]["RATE"], 2)
         amount = self.CURRENCIES[currency]["name"]
-
+        remained = abs(remained)
+        
         if balance > 0:
             return f'На сегодня осталось {remained} {amount}'
         if balance == 0:
